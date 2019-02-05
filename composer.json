@@ -44,6 +44,7 @@
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
+            "composer dumpautoload",
             "@auto-scripts"
         ],
         "post-update-cmd": [
