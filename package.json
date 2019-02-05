@@ -22,7 +22,8 @@
     "dev-server": "encore dev-server --disable-host-check",
     "dev": "encore dev",
     "watch": "encore dev --watch",
-    "build": "encore production --progress"
+    "build": "encore production --progress",
+    "heroku-postbuild": "encore production --progress"
   },
   "author": "Dmitry Boytsov",
   "license": "ISC"
