@@ -1,0 +1,29 @@
+{
+  "name": "JustDo",
+  "version": "0.1.0",
+  "description": "Assessment test",
+  "main": "index.js",
+  "dependencies": {
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "@symfony/webpack-encore": "^0.23.0",
+    "babel-loader": "^8.0.5",
+    "node-sass": "^4.11.0",
+    "react-router-dom": "^4.3.1",
+    "sass-loader": "^7.1.0"
+  },
+  "scripts": {
+    "dev-server": "encore dev-server --disable-host-check",
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production --progress"
+  },
+  "author": "Dmitry Boytsov",
+  "license": "ISC"
+}
