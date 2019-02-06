@@ -1,13 +1,28 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {ConnectedRouter} from 'connected-react-router';
+import routePages from './routes';
 import '../css/JustDo.scss';
+import bg from '../media/bg.png';
+import bg2x from '../media/bg@2x.png';
+import logo from '../media/logo.svg';
 
-class JustDo extends React.Component {
-    render() {
-        return (
-            <p>JustDo!</p>
-        )
-    }
-}
+const JustDo = ({history}) => {
+    return (
+        <div className='jd-container'>
+            <div className='jd-background'>
+                <img className='jd-background-logo' src={logo} />
 
-ReactDOM.render(<JustDo/>, document.getElementById('root'));
+                <div className='jd-background-container'>
+                    <img src={bg} srcSet={`${bg2x} 2x`} />
+                </div>
+            </div>
+            <div className='jd-page'>
+                <ConnectedRouter history={history}>
+                    {routePages}
+                </ConnectedRouter>
+            </div>
+        </div>
+    );
+};
+
+export default JustDo;

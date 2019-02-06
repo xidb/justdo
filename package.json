@@ -4,8 +4,13 @@
   "description": "Assessment test",
   "main": "index.js",
   "dependencies": {
+    "connected-react-router": "^6.2.2",
+    "history": "^4.7.2",
     "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "react-dom": "^16.7.0",
+    "react-redux": "^6.0.0",
+    "react-router": "^4.3.1",
+    "redux": "^4.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",

@@ -4,7 +4,7 @@ Encore.setOutputPath('public/build/')
     .setPublicPath('/build')
     .cleanupOutputBeforeBuild()
     .enableSourceMaps(!Encore.isProduction())
-    .addEntry('js/app', './assets/js/JustDo.js')
+    .addEntry('js/JustDo', './assets/js/index.js')
     .enableSassLoader()
     .enableReactPreset()
     .configureBabel((babelConfig) => {
