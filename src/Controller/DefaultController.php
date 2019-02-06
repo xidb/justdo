@@ -9,7 +9,7 @@ class DefaultController
 {
     /**
      * @Template("default/index.html.twig")
-     * @Route("/{reactRouting}", name="index", defaults={"reactRouting": null})
+     * @Route("/{reactRouting}", name="index", requirements={"reactRouting"="^(?!api).+"}, defaults={"reactRouting": null})
      */
     public function index() {
         return [];

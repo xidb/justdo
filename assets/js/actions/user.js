@@ -1,31 +1,30 @@
-export const LOGIN_REQUEST = 'LOGIN_REQUEST';
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_FAIL = 'LOGIN_FAIL';
+export const SIGNIN_REQUEST = 'SIGNIN_REQUEST';
+export const SIGNIN_SUCCESS = 'SIGNIN_SUCCESS';
+export const SIGNIN_FAIL = 'SIGNIN_FAIL';
 
-const handleLogin = (callback) => {
-    return (dispatch) => {
-        dispatch({
-            type: LOGIN_REQUEST
+const handleSIGNIN = dispatch => {
+    fetch('http://justdo.loc/api')
+        .then(response => {
+            return response.json();
+        })
+        .then(response => {
+            if (response === 1)  {
+                dispatch({
+                    type: SIGNIN_SUCCESS,
+                    payload: 'user'
+                });
+            } else {
+                dispatch({
+                    type: SIGNIN_FAIL,
+                    error: true,
+                    payload: new Error('Auth error'),
+                });
+            }
         });
 
-        //await fetch
-        if (1) {
-            dispatch({
-                type: LOGIN_SUCCESS,
-                payload: 'username'
-            });
-
-            if (typeof callback === 'function') {
-                callback();
-            }
-        } else {
-            dispatch({
-                type: LOGIN_FAIL,
-                error: true,
-                payload: new Error('Error')
-            });
-        }
-    };
+    return {
+        type: SIGNIN_REQUEST
+    }
 };
 
-export default handleLogin;
+export default handleSIGNIN;

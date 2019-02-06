@@ -1,4 +1,4 @@
-import {LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAIL} from '../actions/user';
+import {SIGNIN_REQUEST, SIGNIN_SUCCESS, SIGNIN_FAIL} from '../actions/user';
 
 const initialState = {
     name: '',
@@ -8,13 +8,13 @@ const initialState = {
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
-        case LOGIN_REQUEST:
+        case SIGNIN_REQUEST:
             return {...state, isFetching: true, error: false};
 
-        case LOGIN_SUCCESS:
+        case SIGNIN_SUCCESS:
             return {...state, isFetching: false, name: action.payload};
 
-        case LOGIN_FAIL:
+        case SIGNIN_FAIL:
             return {...state, isFetching: false, error: action.payload.message};
 
         default:
