@@ -7,12 +7,17 @@
 		font-size: 1.15em;
 		border-radius: 26px;
 		color: white;
+		cursor: pointer;
 
 		background: #2f80ed;
 		background: -moz-linear-gradient(238deg, #2f80ed 0%, #56ccf2 100%);
 		background: -webkit-linear-gradient(238deg, #2f80ed 0%, #56ccf2 100%);
 		background: linear-gradient(238deg, #2f80ed 0%, #56ccf2 100%);
 		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2f80ed', endColorstr='#56ccf2', GradientType=1);
+
+		&:focus {
+			outline: none;
+		}
 	}
 
 	&-center {
@@ -38,10 +43,11 @@
 	&-form {
 		margin-bottom: 4rem;
 
+		$input-padding: 0.75rem;
+
 		input {
-			margin-bottom: 1rem;
-			padding-top: 0.75rem;
-			padding-bottom: 0.75em;
+			padding-top: $input-padding;
+			padding-bottom: $input-padding;
 			border: none;
 			border-bottom: 1px solid $color-grey;
 			font-size: 16px;
@@ -54,12 +60,54 @@
 		}
 
 		&-group {
+			position: relative;
 			width: 100%;
 			text-align: center;
+			padding-bottom: 2.75rem;
+
+			&-toggle-visible, &-toggle-invisible {
+				position: absolute;
+				height: 1em;
+				top: $input-padding;
+				right: 0;
+				cursor: pointer;
+			}
+
+			&-toggle-invisible {
+				top: $input-padding - 0.25rem;
+				height: 1.425em;
+			}
 		}
 
 		[type="submit"] {
 			width: 70%;
+		}
+
+		&-submit-result {
+			position: relative;
+			height: 4em;
+			color: $color-blue;
+
+			&-error, &-success {
+				position: absolute;
+				width: 100%;
+				top: 0;
+				text-align: center;
+			}
+
+			&-error {
+				color: $color-red;
+			}
+		}
+
+		&-error {
+			display: block;
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			text-align: right;
+			font-size: 0.85em;
+			color: $color-red;
 		}
 	}
 
@@ -73,6 +121,12 @@
 		@media only screen and (max-width: 768px) {
 			grid-template-columns: auto;
 			grid-template-rows: 10% 90%;
+		}
+
+		&-spinner {
+			background: url("../media/spinner.svg") no-repeat center center;
+			opacity: 0.3;
+			transition: background 0.3s ease-out, opacity 0.3s ease-out;
 		}
 
 		p {
@@ -136,10 +190,6 @@
 
 		h2 {
 			margin-bottom: 4rem;
-		}
-
-		button {
-			margin-top: 4rem;
 		}
 	}
 

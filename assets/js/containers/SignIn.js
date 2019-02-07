@@ -6,9 +6,9 @@ import Footer from '../components/Footer';
 
 class SignIn extends React.Component {
     render() {
-        const {name, error, isFetching} = this.props.user;
+        const {name, error} = this.props.user;
 
-        if (isFetching) {
+        if (false) {
             return (
                 <div className="jd-page jd-page-footer">
                     Loading...

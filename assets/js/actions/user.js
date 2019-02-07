@@ -1,40 +1,68 @@
-export const SIGNIN_REQUEST = 'SIGNIN_REQUEST';
-export const SIGNIN_SUCCESS = 'SIGNIN_SUCCESS';
-export const SIGNIN_FAIL = 'SIGNIN_FAIL';
+import {APP_URL, API_URL} from '../constants';
+import {SPINNER} from './index';
 
-const handleSIGNIN = dispatch => {
-    const request = new Request(`http://justdo.loc/api/auth`, {
+export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
+export const SIGN_UP_FAIL = 'SIGN_UP_FAIL';
+export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS';
+export const SIGN_IN_FAIL = 'SIGN_IN_FAIL';
+
+const handleSignUp = (values, dispatch) => {
+    dispatch({
+        type: SPINNER
+    });
+
+    const request = new Request(`${API_URL}user`, {
         method: 'POST',
         headers: new Headers({'Content-Type': 'application/json'}),
         body: JSON.stringify({
-            email: 'boytsov.dm@gmail.com',
-            password: '12345'
+            email: values.email,
+            password: values.password,
+            appURL: APP_URL
         })
     });
 
+    let responseOk = true;
+
     fetch(request)
         .then(response => {
+            responseOk = response.ok;
             return response.json();
         })
-        .then(response => {
-            console.log(response);
-            // if (response === 1) {
-            //     dispatch({
-            //         type: SIGNIN_SUCCESS,
-            //         payload: 'user'
-            //     });
-            // } else {
-            //     dispatch({
-            //         type: SIGNIN_FAIL,
-            //         error: true,
-            //         payload: new Error('Auth error')
-            //     });
-            // }
+        .then(data => {
+            if (responseOk) {
+                dispatch({
+                    type: SIGN_UP_SUCCESS,
+                    payload: 'Please check your e-mail to confirm sign up'
+                });
+            } else {
+                let payload = data.message;
+                if (typeof data.errors !== 'undefined') {
+                    if (Array.isArray(data.errors.email) || Array.isArray(data.errors.password)) {
+                        payload = '';
+                    }
+                    if (Array.isArray(data.errors.email)) {
+                        payload += data.errors.email.join('\n');
+                    }
+                    if (Array.isArray(data.errors.password)) {
+                        payload += data.errors.password.join('\n');
+                    }
+                }
+
+                dispatch({
+                    type: SIGN_UP_FAIL,
+                    payload: new Error(payload)
+                });
+            }
+        })
+        .then(() => {
+            dispatch({
+                type: SPINNER
+            });
         });
 
     return {
-        type: SIGNIN_REQUEST
+        type: ''
     };
 };
 
-export default handleSIGNIN;
+export default handleSignUp;
