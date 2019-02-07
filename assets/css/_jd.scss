@@ -1,13 +1,86 @@
 .jd {
+	overflow: hidden;
+
+	button {
+		margin-bottom: 2rem;
+		padding: 0.75rem;
+		font-size: 1.15em;
+		border-radius: 26px;
+		color: white;
+
+		background: #2f80ed;
+		background: -moz-linear-gradient(238deg, #2f80ed 0%, #56ccf2 100%);
+		background: -webkit-linear-gradient(238deg, #2f80ed 0%, #56ccf2 100%);
+		background: linear-gradient(238deg, #2f80ed 0%, #56ccf2 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2f80ed', endColorstr='#56ccf2', GradientType=1);
+	}
+
+	&-center {
+		width: 100%;
+		text-align: center;
+	}
+
+	&-back {
+		display: inline-flex;
+		align-self: flex-start;
+		font-family: serif;
+		font-size: 3rem;
+		color: black;
+		cursor: pointer;
+	}
+
+	&-center-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&-form {
+		margin-bottom: 4rem;
+
+		input {
+			margin-bottom: 1rem;
+			padding-top: 0.75rem;
+			padding-bottom: 0.75em;
+			border: none;
+			border-bottom: 1px solid $color-grey;
+			font-size: 16px;
+			color: black;
+
+			&::placeholder {
+				font-size: 16px;
+				color: $color-grey;
+			}
+		}
+
+		&-group {
+			width: 100%;
+			text-align: center;
+		}
+
+		[type="submit"] {
+			width: 70%;
+		}
+	}
+
 	&-container {
 		width: 100%;
 		height: 100vh;
 		display: grid;
 		grid-template-columns: 45% 55%;
+		font-size: 16px;
 
 		@media only screen and (max-width: 768px) {
 			grid-template-columns: auto;
 			grid-template-rows: 10% 90%;
+		}
+
+		p {
+			color: black;
+		}
+
+		h3 {
+			color: $color-blue;
 		}
 	}
 
@@ -47,6 +120,7 @@
 
 	&-page {
 		padding: 1rem;
+		overflow: auto;
 
 		&-footer {
 			display: grid;
@@ -56,10 +130,31 @@
 		}
 	}
 
+	&-sign-form {
+		width: 60%;
+		max-width: 400px;
+
+		h2 {
+			margin-bottom: 4rem;
+		}
+
+		button {
+			margin-top: 4rem;
+		}
+	}
+
 	&-footer {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		text-align: center;
+	}
+
+	&-document {
+		padding: 3rem;
+
+		&-header {
+			display: flex;
+		}
 	}
 }

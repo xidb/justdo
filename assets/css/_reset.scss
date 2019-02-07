@@ -5,8 +5,29 @@ html {
 
 body {
 	margin: 0;
+	line-height: 1.5;
+	color: $color-grey;
 }
 
 @include headings {
 	font-family: 'Comfortaa', sans-serif;
+	color: black;
+}
+
+a, a:visited {
+	font-weight: 500;
+	color: $color-blue;
+}
+
+input {
+	width: 100%;
+	border: 1px solid $color-grey;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+button {
+	border: none;
 }

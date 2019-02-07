@@ -8,15 +8,15 @@ import logo from '../media/logo.svg';
 
 const JustDo = ({history}) => {
     return (
-        <div className='jd-container'>
-            <div className='jd-background'>
-                <img className='jd-background-logo' src={logo} />
+        <div className="jd-container">
+            <div className="jd-background">
+                {/*<img className="jd-background-logo" src={logo} />*/}
 
-                <div className='jd-background-container'>
+                <div className="jd-background-container">
                     <img src={bg} srcSet={`${bg2x} 2x`} />
                 </div>
             </div>
-            <div className='jd-page'>
+            <div className="jd-page">
                 <ConnectedRouter history={history}>
                     {routePages}
                 </ConnectedRouter>
