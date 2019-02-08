@@ -29,5 +29,5 @@ services:
         arguments:
             $parameters:
                 sender_email:
-                    address: noreply@justdo.com
+                    address: '%env(MAILER_SENDER)%'
                     name: JustDo

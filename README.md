@@ -8,7 +8,8 @@ Check demo [here](https://xid-justdo.herokuapp.com/).
 	```bash
 	composer install
 	```
-* Copy `.env` to `.env.local` and configure `DATABASE_URL`, `CORS_ALLOW_ORIGIN`, `JWT_PASSPHRASE` and `MAILER_URL`.
+* Copy `.env` to `.env.local` and configure `DATABASE_URL`, `CORS_ALLOW_ORIGIN`, `JWT_PASSPHRASE`, `MAILER_PASSWORD` and `MAILER_SENDER`.
+* Configure `config/packages/swiftmailer.yaml`.
 
 * Use `open-ssl` to create secret keys for JWT (passphrase should be the same as `JWT_PASSPHRASE`):
 	```bash

@@ -1,3 +1,9 @@
 swiftmailer:
-    url: '%env(MAILER_URL)%'
+    transport: smtp
+    host: smtp.yandex.ru
+    port: 465
+    username: boytsov.dm
+    encryption: ssl
+    auth_mode: login
+    password: '%env(MAILER_PASSWORD)%'
     spool: { type: 'memory' }
