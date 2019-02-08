@@ -5,7 +5,7 @@ import SignInForm from '../components/SignInForm';
 import Footer from '../components/Footer';
 import {handleSignIn} from '../actions/user';
 
-const SignIn = (props) => {
+const SignIn = props => {
     if (props.signedIn) {
         return <Redirect to="/task"/>;
     }

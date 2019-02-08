@@ -2,7 +2,8 @@ import React from 'react';
 import {Route, Switch} from 'react-router';
 import SignIn from '../containers/SignIn';
 import SignUp from '../containers/SignUp';
-import ForgotPassword from '../containers/PasswordForgot';
+import PasswordForgot from '../containers/PasswordForgot';
+import PasswordReset from '../containers/PasswordReset';
 import Activate from '../components/Activate';
 import TermsAndConditions from '../components/TermsAndConditions';
 import PrivacyPolicy from '../components/PrivacyPolicy';
@@ -14,7 +15,8 @@ const routes = (
         <Route exact path="/" component={SignUp}/>
         <Route path="/sign-in" component={SignIn}/>
         <Route path="/sign-up" component={SignUp}/>
-        <Route path="/forgot-password" component={ForgotPassword}/>
+        <Route path="/forgot-password" component={PasswordForgot}/>
+        <Route path="/reset-password/:token" component={PasswordReset}/>
         <Route path="/activate/:token" component={Activate}/>
         <Route path="/terms-and-conditions" component={TermsAndConditions}/>
         <Route path="/privacy-policy" component={PrivacyPolicy}/>

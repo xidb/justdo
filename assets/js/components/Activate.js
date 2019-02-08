@@ -5,7 +5,7 @@ import {checkAndActivate} from '../actions/user';
 
 class Activate extends React.Component {
     componentDidMount() {
-        this.props.checkAndActivate(this.props.match.params.token);
+        this.props.checkAndActivate(this.props.match.params['token']);
     }
 
     render() {
@@ -13,7 +13,7 @@ class Activate extends React.Component {
             if (this.props.isError) {
                 return this.props.message;
             } else {
-                return <Redirect to={{pathname: '/sign-in'}}/>;
+                return <Redirect to="/sign-in"/>;
             }
         } else {
             return 'Activating...';

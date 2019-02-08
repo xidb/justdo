@@ -4,7 +4,7 @@ import PasswordForgotForm from '../components/PasswordForgotForm';
 import Footer from '../components/Footer';
 import {handlePasswordForgot} from '../actions/user';
 
-const PasswordForgot = (props) => (
+const PasswordForgot = props => (
     <div className="jd-page-footer">
         <div className="jd-center-container">
             <PasswordForgotForm onSubmit={props.handlePasswordForgot}/>
