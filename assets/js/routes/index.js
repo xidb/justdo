@@ -2,9 +2,10 @@ import React from 'react';
 import {Route, Switch} from 'react-router';
 import SignIn from '../containers/SignIn';
 import SignUp from '../containers/SignUp';
+import Activate from '../components/Activate';
 import TermsAndConditions from '../components/TermsAndConditions';
 import PrivacyPolicy from '../components/PrivacyPolicy';
-import Activate from '../components/Activate';
+import Task from '../components/Task';
 import NotFound from '../components/NotFound';
 
 const routes = (
@@ -12,9 +13,10 @@ const routes = (
         <Route exact path="/" component={SignUp}/>
         <Route path="/sign-in" component={SignIn}/>
         <Route path="/sign-up" component={SignUp}/>
+        <Route path="/activate/:token" component={Activate}/>
         <Route path="/terms-and-conditions" component={TermsAndConditions}/>
         <Route path="/privacy-policy" component={PrivacyPolicy}/>
-        <Route path="/activate/:token" component={Activate}/>
+        <Route path="/task" component={Task}/>
         <Route component={NotFound}/>
     </Switch>
 );

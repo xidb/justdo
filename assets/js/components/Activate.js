@@ -21,10 +21,10 @@ class Activate extends React.Component {
     }
 }
 
-const mapStateToProps = store => ({
-    isError: store.user.error,
-    message: store.user.message,
-    loaded: store.user.loaded,
+const mapStateToProps = state => ({
+    isError: state.user.error,
+    message: state.user.message,
+    loaded: state.user.loaded,
 });
 
 const mapDispatchToProps = dispatch => ({

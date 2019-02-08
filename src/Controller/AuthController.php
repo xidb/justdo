@@ -15,7 +15,7 @@ class AuthController extends AbstractController
      *
      * @throws RuntimeException
      */
-    public function create() {
+    public function index() {
         throw new RuntimeException('Invalid authentication handlers in your security firewall configuration.');
     }
 }

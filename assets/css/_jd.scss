@@ -175,6 +175,9 @@
 	}
 
 	&-page {
+		$p: &;
+
+		position: relative;
 		padding: 1rem;
 		overflow: auto;
 
@@ -183,6 +186,13 @@
 			text-align: center;
 			height: 100%;
 			grid-template-rows: 1fr 100px;
+		}
+
+		button#{$p}-sign-out {
+			position: absolute;
+			top: 1rem;
+			right: 1rem;
+			font-size: 0.75em;
 		}
 	}
 

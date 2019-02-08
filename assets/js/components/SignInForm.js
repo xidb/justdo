@@ -9,8 +9,8 @@ import makeInvisible from '../../media/ic_eye_unvisible.svg';
 class SignInForm extends Form {
     render() {
         const passwordToggle = this.state.typePassword === 'password'
-            ? <img src={makeVisible} onClick={this.togglePassword} className="jd-form-group-toggle-visible" />
-            : <img src={makeInvisible} onClick={this.togglePassword} className="jd-form-group-toggle-invisible" />;
+            ? <img src={makeVisible} onClick={this.togglePassword} className="jd-form-group-toggle-visible"/>
+            : <img src={makeInvisible} onClick={this.togglePassword} className="jd-form-group-toggle-invisible"/>;
 
         return (
             <form onSubmit={this.handleSubmit} className="jd-form jd-sign-form">
@@ -36,9 +36,9 @@ SignInForm = reduxForm({
     form: 'SignIn'
 })(SignInForm);
 
-const mapStateToProps = store => ({
-    isError: store.user.error,
-    message: store.user.message
+const mapStateToProps = state => ({
+    isError: state.user.error,
+    message: state.user.message
 });
 
 export default connect(mapStateToProps)(SignInForm);

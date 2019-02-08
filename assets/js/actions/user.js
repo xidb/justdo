@@ -5,6 +5,7 @@ export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
 export const SIGN_UP_FAIL = 'SIGN_UP_FAIL';
 export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS';
 export const SIGN_IN_FAIL = 'SIGN_IN_FAIL';
+export const SIGN_OUT = 'SIGN_OUT';
 export const TOKEN_SUCCESS = 'TOKEN_SUCCESS';
 export const TOKEN_FAIL = 'TOKEN_FAIL';
 
@@ -90,9 +91,18 @@ export const handleSignIn = (values, dispatch) => {
         })
         .then(data => {
             if (responseOk) {
-                dispatch({
-                    type: SIGN_IN_SUCCESS
-                });
+                if (typeof data.attributes !== 'undefined' && data.attributes['accessToken']) {
+                    localStorage.setItem('accessToken', data.attributes['accessToken']);
+                    dispatch({
+                        type: SIGN_IN_SUCCESS
+                    });
+                } else {
+                    dispatch({
+                        type: SIGN_IN_FAIL,
+                        payload: new Error('Sing-In failed.')
+                    });
+                }
+
             } else {
                 let payload = data.message;
                 if (typeof data.errors !== 'undefined') {
@@ -122,6 +132,25 @@ export const handleSignIn = (values, dispatch) => {
     return {
         type: ''
     };
+};
+
+export const checkAuth = dispatch => {
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken && accessToken.length) {
+        return dispatch({
+            type: SIGN_IN_SUCCESS
+        });
+    }
+    return dispatch({
+        type: ''
+    });
+};
+
+export const signOut = dispatch => {
+    localStorage.removeItem('accessToken');
+    return dispatch({
+        type: SIGN_OUT
+    });
 };
 
 export const checkAndActivate = (token, dispatch) => {

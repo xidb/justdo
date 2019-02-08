@@ -1,9 +1,9 @@
 import React from 'react';
 
-const PrivacyPolicy = (props) => (
+const PrivacyPolicy = ({history}) => (
     <div className='jd-document'>
         <div className="jd-document-header">
-            <div onClick={props.history.goBack} className="jd-back">&#8249;</div>
+            <div onClick={history.goBack} className="jd-back">&#8249;</div>
             <h2 className="jd-center">Privacy Policy</h2>
         </div>
         <p>
