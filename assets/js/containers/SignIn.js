@@ -17,11 +17,11 @@ const SignIn = (props) => {
             </div>
             <Footer/>
         </div>
-    )
+    );
 };
 
 const mapStateToProps = state => ({
-    signedIn: state.user.signedIn,
+    signedIn: state.user.signedIn
 });
 
 const mapDispatchToProps = dispatch => ({

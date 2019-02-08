@@ -6,8 +6,8 @@ export const SIGN_UP_FAIL = 'SIGN_UP_FAIL';
 export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS';
 export const SIGN_IN_FAIL = 'SIGN_IN_FAIL';
 export const SIGN_OUT = 'SIGN_OUT';
-export const TOKEN_SUCCESS = 'TOKEN_SUCCESS';
-export const TOKEN_FAIL = 'TOKEN_FAIL';
+export const ACTIVATE_SUCCESS = 'ACTIVATE_SUCCESS';
+export const ACTIVATE_FAIL = 'ACTIVATE_FAIL';
 
 export const handleSignUp = (values, dispatch) => {
     dispatch({
@@ -173,7 +173,7 @@ export const checkAndActivate = (token, dispatch) => {
                     activate();
                 } else {
                     dispatch({
-                        type: TOKEN_FAIL,
+                        type: ACTIVATE_FAIL,
                         payload: new Error(data.message)
                     });
                     dispatch({
@@ -196,12 +196,12 @@ export const checkAndActivate = (token, dispatch) => {
             .then(data => {
                 if (responseOk) {
                     dispatch({
-                        type: TOKEN_SUCCESS,
+                        type: ACTIVATE_SUCCESS,
                         payload: 'Your e-mail has been confirmed.'
                     });
                 } else {
                     dispatch({
-                        type: TOKEN_FAIL,
+                        type: ACTIVATE_FAIL,
                         payload: new Error(data.message)
                     });
                 }

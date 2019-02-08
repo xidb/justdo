@@ -52,7 +52,7 @@ export default class Form extends React.Component {
             errors.password = 'Invalid password';
         }
 
-        if (!values.confirm) {
+        if (!values.confirm && !values.password) {
             errors.confirm = 'Password required';
         } else if (values.password !== values.confirm) {
             errors.confirm = 'Passwords don\'t match';

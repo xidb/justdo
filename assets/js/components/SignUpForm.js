@@ -8,6 +8,15 @@ import makeInvisible from '../../media/ic_eye_unvisible.svg';
 
 class SignUpForm extends Form {
     render() {
+        const {form, userForm, isError, message} = this.props;
+        let sumbmitResult = '';
+        if (form.toLowerCase() === userForm) {
+            sumbmitResult =
+                <div className="jd-form-submit-result">
+                    <div className={`jd-form-submit-result-${isError ? 'error' : 'success'}`}>{message}</div>
+                </div>
+        }
+
         const passwordToggle = this.state.typePassword === 'password'
             ? <img src={makeVisible} onClick={this.togglePassword} className="jd-form-group-toggle-visible"/>
             : <img src={makeInvisible} onClick={this.togglePassword} className="jd-form-group-toggle-invisible"/>;
@@ -30,9 +39,7 @@ class SignUpForm extends Form {
                     <Field name="confirm" component={SignUpForm.renderField} type={this.state.typeConfirm} label="Confirm Password"/>
                     {confirmToggle}
                 </div>
-                <div className="jd-form-submit-result">
-                    <div className={`jd-form-submit-result-${this.props.isError ? 'error' : 'success'}`}>{this.props.message}</div>
-                </div>
+                <div className="jd-form-submit-result">{sumbmitResult}</div>
                 <button type="submit">Sign Up</button>
                 <div>I already have an account.&nbsp;<Link to="/sign-in">Sign In</Link></div>
             </form>
@@ -46,6 +53,7 @@ SignUpForm = reduxForm({
 })(SignUpForm);
 
 const mapStateToProps = state => ({
+    userForm: state.user.form,
     isError: state.user.error,
     message: state.user.message
 });
