@@ -181,6 +181,13 @@
 		padding: 1rem;
 		overflow: auto;
 
+		&-header-footer {
+			display: grid;
+			text-align: center;
+			height: 100%;
+			grid-template-rows: 100px 1fr 100px;
+		}
+
 		&-footer {
 			display: grid;
 			text-align: center;
