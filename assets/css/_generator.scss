@@ -1,0 +1,22 @@
+@each $prop, $abbrev in (margin: m, padding: p) {
+	@each $size, $length in $spacers {
+
+		.jd-#{$abbrev}-#{$size} { #{$prop}: $length !important; }
+		.jd-#{$abbrev}t-#{$size},
+		.jd-#{$abbrev}y-#{$size} {
+			#{$prop}-top: $length !important;
+		}
+		.jd-#{$abbrev}r-#{$size},
+		.jd-#{$abbrev}x-#{$size} {
+			#{$prop}-right: $length !important;
+		}
+		.jd-#{$abbrev}b-#{$size},
+		.jd-#{$abbrev}y-#{$size} {
+			#{$prop}-bottom: $length !important;
+		}
+		.jd-#{$abbrev}l-#{$size},
+		.jd-#{$abbrev}x-#{$size} {
+			#{$prop}-left: $length !important;
+		}
+	}
+}

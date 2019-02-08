@@ -8,6 +8,8 @@ export const SIGN_IN_FAIL = 'SIGN_IN_FAIL';
 export const SIGN_OUT = 'SIGN_OUT';
 export const ACTIVATE_SUCCESS = 'ACTIVATE_SUCCESS';
 export const ACTIVATE_FAIL = 'ACTIVATE_FAIL';
+export const PASSWORD_FORGOT_SUCCESS = 'PASSWORD_FORGOT_SUCCESS';
+export const PASSWORD_FORGOT_FAIL = 'PASSWORD_FORGOT_FAIL';
 
 export const handleSignUp = (values, dispatch) => {
     dispatch({
@@ -212,6 +214,59 @@ export const checkAndActivate = (token, dispatch) => {
                 });
             });
     }
+
+    return {
+        type: ''
+    };
+};
+
+export const handlePasswordForgot = (email, dispatch) => {
+    dispatch({
+        type: SPINNER
+    });
+
+    const request = new Request(`${API_URL}user-token`, {
+        method: 'POST',
+        headers: new Headers({'Content-Type': 'application/json'}),
+        body: JSON.stringify({
+            passwordReset: {
+                email: email,
+                appURL: APP_URL
+            }
+        })
+    });
+
+    let responseOk = true;
+
+    fetch(request)
+        .then(response => {
+            responseOk = response.ok;
+            return response.json();
+        })
+        .then(data => {
+            if (responseOk) {
+                dispatch({
+                    type: PASSWORD_FORGOT_SUCCESS,
+                    payload: 'Please check your e-mail for password reset link.'
+                });
+            } else {
+                let payload = data.message;
+                if (typeof data.errors !== 'undefined') {
+                    if (Array.isArray(data.errors.email)) {
+                        payload = data.errors.email.join('\n');
+                    }
+                }
+                dispatch({
+                    type: PASSWORD_FORGOT_FAIL,
+                    payload: new Error(payload)
+                });
+            }
+        })
+        .then(() => {
+            dispatch({
+                type: SPINNER
+            });
+        });
 
     return {
         type: ''

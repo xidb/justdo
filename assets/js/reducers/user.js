@@ -1,4 +1,7 @@
-import {SIGN_UP_SUCCESS, SIGN_UP_FAIL, SIGN_IN_SUCCESS, SIGN_IN_FAIL, SIGN_OUT, ACTIVATE_SUCCESS, ACTIVATE_FAIL} from '../actions/user';
+import {
+    ACTIVATE_FAIL, ACTIVATE_SUCCESS, SIGN_IN_FAIL, SIGN_IN_SUCCESS, SIGN_OUT, SIGN_UP_FAIL,
+    SIGN_UP_SUCCESS, PASSWORD_FORGOT_SUCCESS, PASSWORD_FORGOT_FAIL
+} from '../actions/user';
 
 const initialState = {
     signedIn: false,
@@ -30,6 +33,12 @@ const userReducer = (state = initialState, action) => {
 
         case ACTIVATE_FAIL:
             return {...state, error: true, message: action.payload.message, loaded: true};
+
+        case PASSWORD_FORGOT_SUCCESS:
+            return {...state, form: 'passwordforgot', error: false, message: action.payload};
+
+        case PASSWORD_FORGOT_FAIL:
+            return {...state, form: 'passwordforgot', error: true, message: action.payload.message};
 
         default:
             return state;
