@@ -4,6 +4,7 @@ import SignIn from '../containers/SignIn';
 import SignUp from '../containers/SignUp';
 import TermsAndConditions from '../components/TermsAndConditions';
 import PrivacyPolicy from '../components/PrivacyPolicy';
+import Activate from '../components/Activate';
 import NotFound from '../components/NotFound';
 
 const routes = (
@@ -13,6 +14,7 @@ const routes = (
         <Route path="/sign-up" component={SignUp}/>
         <Route path="/terms-and-conditions" component={TermsAndConditions}/>
         <Route path="/privacy-policy" component={PrivacyPolicy}/>
+        <Route path="/activate/:token" component={Activate}/>
         <Route component={NotFound}/>
     </Switch>
 );

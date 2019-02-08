@@ -1,9 +1,9 @@
-import {SIGN_UP_SUCCESS, SIGN_UP_FAIL, SIGN_IN_SUCCESS, SIGN_IN_FAIL} from '../actions/user';
+import {SIGN_UP_SUCCESS, SIGN_UP_FAIL, SIGN_IN_SUCCESS, SIGN_IN_FAIL, TOKEN_SUCCESS, TOKEN_FAIL} from '../actions/user';
 
 const initialState = {
     error: false,
     message: '',
-    redirect: false
+    loaded: false
 };
 
 const userReducer = (state = initialState, action) => {
@@ -19,6 +19,12 @@ const userReducer = (state = initialState, action) => {
 
         case SIGN_IN_FAIL:
             return {...state, error: true, message: action.payload.message};
+
+        case TOKEN_SUCCESS:
+            return {...state, error: false, message: action.payload, loaded: true};
+
+        case TOKEN_FAIL:
+            return {...state, error: true, message: action.payload.message, loaded: true};
 
         default:
             return state;

@@ -1,10 +1,12 @@
-import {APP_URL, API_URL} from '../constants';
+import {API_URL, APP_URL} from '../constants';
 import {SPINNER} from './index';
 
 export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
 export const SIGN_UP_FAIL = 'SIGN_UP_FAIL';
 export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS';
 export const SIGN_IN_FAIL = 'SIGN_IN_FAIL';
+export const TOKEN_SUCCESS = 'TOKEN_SUCCESS';
+export const TOKEN_FAIL = 'TOKEN_FAIL';
 
 export const handleSignUp = (values, dispatch) => {
     dispatch({
@@ -116,6 +118,71 @@ export const handleSignIn = (values, dispatch) => {
                 type: SPINNER
             });
         });
+
+    return {
+        type: ''
+    };
+};
+
+export const checkAndActivate = (token, dispatch) => {
+    dispatch({
+        type: SPINNER
+    });
+
+    (function check() {
+        const request = new Request(`${API_URL}user-token/${token}`);
+
+        let responseOk = true;
+
+        fetch(request)
+            .then(response => {
+                responseOk = response.ok;
+                return response.json();
+            })
+            .then(data => {
+                if (responseOk) {
+                    activate();
+                } else {
+                    dispatch({
+                        type: TOKEN_FAIL,
+                        payload: new Error(data.message)
+                    });
+                    dispatch({
+                        type: SPINNER
+                    });
+                }
+            })
+    })();
+
+    function activate() {
+        const request = new Request(`${API_URL}user-token/${token}/activate`);
+
+        let responseOk = true;
+
+        fetch(request)
+            .then(response => {
+                responseOk = response.ok;
+                return response.json();
+            })
+            .then(data => {
+                if (responseOk) {
+                    dispatch({
+                        type: TOKEN_SUCCESS,
+                        payload: 'Your e-mail has been confirmed.'
+                    });
+                } else {
+                    dispatch({
+                        type: TOKEN_FAIL,
+                        payload: new Error(data.message)
+                    });
+                }
+            })
+            .then(() => {
+                dispatch({
+                    type: SPINNER
+                });
+            });
+    }
 
     return {
         type: ''

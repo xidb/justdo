@@ -1,2 +1,2 @@
-export const APP_URL = 'http://justdo.loc/';
-export const API_URL = 'http://justdo.loc/api/';
+export const APP_URL = window.location.protocol + '//' + window.location.host + '/';
+export const API_URL = APP_URL + 'api/';

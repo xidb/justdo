@@ -44,7 +44,7 @@ class UserMailer
      */
     public function sendAccountActivationMessage(User $user, UserToken $token, string $appURL) {
         $trimmedAppURL = trim($appURL, '/');
-        $url = "{$trimmedAppURL}/user-token/{$token->getUUID()}/activate";
+        $url = "{$trimmedAppURL}/activate/{$token->getUUID()}";
         $htmlTemplate = $this->engine->render('Mailer\user\account_activation.html.twig', ['confirmationURL' => $url]);
         $txtTemplate = $this->engine->render('Mailer\user\account_activation.txt.twig', ['confirmationURL' => $url]);
 
@@ -57,7 +57,8 @@ class UserMailer
      * @param string    $appURL
      */
     public function sendPasswordResetMessage(User $user, UserToken $token, string $appURL) {
-        $url = trim($appURL, '/') . '/api/' . $token->getUUID();
+        $trimmedAppURL = trim($appURL, '/');
+        $url = "{$trimmedAppURL}/reset-password/{$token->getUUID()}";
         $htmlTemplate = $this->engine->render('Mailer\user\password_reset.html.twig', ['confirmationURL' => $url]);
         $txtTemplate = $this->engine->render('Mailer\user\password_reset.txt.twig', ['confirmationURL' => $url]);
 

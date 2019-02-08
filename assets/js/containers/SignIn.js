@@ -1,5 +1,5 @@
 import React from 'react';
-import connect from 'react-redux/es/connect/connect';
+import {connect} from 'react-redux';
 import SignInForm from '../components/SignInForm';
 import Footer from '../components/Footer';
 import {handleSignIn} from '../actions/user';
