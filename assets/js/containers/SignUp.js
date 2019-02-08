@@ -2,7 +2,7 @@ import React from 'react';
 import connect from 'react-redux/es/connect/connect';
 import SignUpForm from '../components/SignUpForm';
 import Footer from '../components/Footer';
-import handleSignUp from '../actions/user';
+import {handleSignUp} from '../actions/user';
 
 const SignUp = (props) => (
     <div className="jd-page jd-page-footer">

@@ -2,6 +2,7 @@
 	overflow: hidden;
 
 	button {
+		display: block;
 		margin-bottom: 2rem;
 		padding: 0.75rem;
 		font-size: 1.15em;
@@ -81,6 +82,7 @@
 
 		[type="submit"] {
 			width: 70%;
+			margin: 0 auto 2rem;
 		}
 
 		&-submit-result {

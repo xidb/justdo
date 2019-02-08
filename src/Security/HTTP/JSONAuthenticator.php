@@ -93,7 +93,7 @@ class JSONAuthenticator implements SimplePreAuthenticatorInterface, Authenticati
 
         /** @var User $user */
         if ($user->getStatus() === User::STATUS_INACTIVE) {
-            throw new AuthenticationException('User is inactive.');
+            throw new AuthenticationException('User is inactive. Please check your e-mail to confirm sign up.');
         }
 
         return new PreAuthenticatedToken($user, $credentials, $providerKey, $user->getRoles());

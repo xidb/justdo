@@ -7,7 +7,6 @@ const initialState = {
 };
 
 const userReducer = (state = initialState, action) => {
-    console.log(action);
     switch (action.type) {
         case SIGN_UP_SUCCESS:
             return {...state, error: false, message: action.payload};

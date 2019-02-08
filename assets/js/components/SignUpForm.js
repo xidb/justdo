@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Field, reduxForm} from 'redux-form';
 import {Link} from 'react-router-dom';
-import Form from '../utils/Form';
+import Form from './Form';
 import makeVisible from '../../media/ic_eye_visible.svg';
 import makeInvisible from '../../media/ic_eye_unvisible.svg';
 
