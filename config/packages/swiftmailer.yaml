@@ -2,7 +2,7 @@ swiftmailer:
     transport: smtp
     host: smtp.yandex.ru
     port: 465
-    username: boytsov.dm
+    username: just.do-react
     encryption: ssl
     auth_mode: login
     password: '%env(MAILER_PASSWORD)%'
